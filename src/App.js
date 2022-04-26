@@ -6,7 +6,7 @@ import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 
 
-const App = () => {
+const App = (props) => {
     return (
         <>
             <div className='app-wrapper'>
@@ -14,8 +14,9 @@ const App = () => {
                 <Navbar/>
                 <div className="content">
                     <Routes>
-                        <Route path="/" exact element={<Profile/>}/>
-                        <Route path="/messages" exact element={<Dialogs/>}/>
+                        <Route path="/" exact
+                               element={<Profile data={props.state.Profile.myPosts} addPost={props.addPost}/>}/>
+                        <Route path="/messages" exact element={<Dialogs data={props.state.Dialogs}/>}/>
                         <Route path="/news" exact element={'news'}/>
                     </Routes>
                 </div>

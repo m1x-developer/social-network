@@ -1,8 +1,8 @@
 .app-wrapper {
-    width: 1200px;
+    width: 1000px;
     margin: 0 auto;
     display: grid;
-    grid-template-rows: 2;
+    grid-template-rows: 2fr;
     grid-auto-columns: 2fr 10fr;
     grid-gap: 10px;
     grid-template-areas:
@@ -24,7 +24,78 @@
     background-color: antiquewhite;
 }
 
+.nav ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav .link {
+    padding: 5px 0;
+}
+
 .content {
     grid-area: c;
     background-color: blanchedalmond;
+    padding: 30px;
 }
+
+.post {
+    display: flex;
+    padding: 5px;
+}
+
+.post img {
+    width: 50px;
+}
+
+.dialogs-items {
+    display: flex;
+}
+
+.all-dialogs {
+    padding-right: 50px;
+}
+
+.dialog {
+    padding: 5px 0;
+}
+
+.profile-block {
+    border: 1px solid black;
+}
+
+.profile-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.profile-foto img {
+    width: 50px;
+    border-radius: 50px;
+}
+
+.profile-wrapper .profile-fio {
+    padding-left: 10px;
+}
+
+.profile-description {
+    padding-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
