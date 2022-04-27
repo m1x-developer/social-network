@@ -1,4 +1,6 @@
-import {renderNew} from "../render";
+let renderNew = () => {
+
+}
 
 let state = {
     Profile: {
@@ -8,6 +10,7 @@ let state = {
             {id: 3, text: "Lor adipisicing elit. Cum, minus"},
             {id: 4, text: "Lor minus"}
         ],
+        newPostText: ''
     },
     Dialogs: {
         userName: [
@@ -22,16 +25,28 @@ let state = {
             {id: 3, text: "bla bla bla"},
             {id: 4, text: "bla bla bla"}
         ]
-    }
+    },
 }
 
-export let addPost = (postMessage) => {
+export const addPost = () => {
     let newPost = {
         id: 20,
-        text: postMessage
+        text: state.Profile.newPostText
     }
     state.Profile.myPosts.push(newPost)
+    state.Profile.newPostText = ''
     renderNew(state)
 }
 
+export const updateNewPostText = (postMessage) => {
+    state.Profile.newPostText = postMessage
+    renderNew(state)
+}
+
+export const subscribe = (observer) => {
+    renderNew = observer
+}
+
+
+window.state = state
 export default state

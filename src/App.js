@@ -6,7 +6,8 @@ import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 
 
-const App = (props) => {
+const App = ({state, updateNewPostText, addPost}) => {
+
     return (
         <>
             <div className='app-wrapper'>
@@ -15,8 +16,15 @@ const App = (props) => {
                 <div className="content">
                     <Routes>
                         <Route path="/" exact
-                               element={<Profile data={props.state.Profile.myPosts} addPost={props.addPost}/>}/>
-                        <Route path="/messages" exact element={<Dialogs data={props.state.Dialogs}/>}/>
+                               element={
+                                   <Profile
+                                       data={state.Profile}
+                                       addPost={addPost}
+                                       updateNewPostText={updateNewPostText}
+                                   />
+                               }
+                        />
+                        <Route path="/messages" exact element={<Dialogs data={state.Dialogs}/>}/>
                         <Route path="/news" exact element={'news'}/>
                     </Routes>
                 </div>
