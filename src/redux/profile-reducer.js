@@ -1,7 +1,17 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
-const profileReducer = (state, action) => {
+let initialState = {
+    myPosts: [
+        {id: 1, text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, minus"},
+        {id: 2, text: "Lorem ipsum ur adipisicing elit. Cum, minus"},
+        {id: 3, text: "Lor adipisicing elit. Cum, minus"},
+        {id: 4, text: "Lor minus"}
+    ],
+    newPostText: ''
+}
+
+const profileReducer = (state = initialState, action) => {
     // eslint-disable-next-line default-case
     switch (action.type) {
         case ADD_POST :

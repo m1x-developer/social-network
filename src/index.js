@@ -1,6 +1,6 @@
 import React from 'react'
 import './index.css'
-import store from "./redux/state";
+import store from "./redux/redux-store";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
@@ -21,4 +21,7 @@ let renderNew = (state) => {
 }
 
 renderNew(store.getState)
-store.subscribe(renderNew)
+store.subscribe(() => {
+    let state =  store.getState()
+    renderNew(state)
+})

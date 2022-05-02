@@ -40,12 +40,10 @@ let store = {
     subscribe(observer) {
         this._renderNew = observer
     },
-    
     dispatch(action) {
         this._state.Profile = profileReducer(this._state.Profile, action)
         this._state.Dialogs = dialogsReducer(this._state.Dialogs, action)
         this._state.sidebar = sidebarReducer(this._state.sidebar, action)
-        
         //observer
         this._renderNew(this._state)
     }

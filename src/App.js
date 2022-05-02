@@ -7,7 +7,6 @@ import Dialogs from "./components/Dialogs/Dialogs";
 
 
 const App = ({state, dispatch, store}) => {
-    
     return (
         <>
             <div className='app-wrapper'>
@@ -18,7 +17,7 @@ const App = ({state, dispatch, store}) => {
                         <Route path="/" exact
                                element={
                                    <Profile
-                                       data={ state.Profile }
+                                       state={ state.Profile }
                                        dispatch={ dispatch }
                                    />
                                }
