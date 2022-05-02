@@ -1,8 +1,8 @@
 import React from 'react'
 import './index.css'
-import state, {subscribe, addPost, updateNewPostText} from "./redux/state";
+import store from "./redux/state";
 import ReactDOM from "react-dom/client";
-import {BrowserRouter} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
 
@@ -10,10 +10,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 let renderNew = (state) => {
     root.render(
         <BrowserRouter>
-            <App state={state} addPost={addPost} updateNewPostText={updateNewPostText}/>
+            <App
+                state={ store.getState() }
+                dispatch={ store.dispatch.bind(store)}
+                store={store}
+            />
         </BrowserRouter>
     )
+    
 }
 
-renderNew(state)
-subscribe(renderNew)
+renderNew(store.getState)
+store.subscribe(renderNew)

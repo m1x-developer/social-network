@@ -1,13 +1,13 @@
 import './App.css'
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Header from './components/Header/Header'
 import Navbar from './components/Navbar/Navbar'
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 
 
-const App = ({state, updateNewPostText, addPost}) => {
-
+const App = ({state, dispatch, store}) => {
+    
     return (
         <>
             <div className='app-wrapper'>
@@ -18,17 +18,15 @@ const App = ({state, updateNewPostText, addPost}) => {
                         <Route path="/" exact
                                element={
                                    <Profile
-                                       data={state.Profile}
-                                       addPost={addPost}
-                                       updateNewPostText={updateNewPostText}
+                                       data={ state.Profile }
+                                       dispatch={ dispatch }
                                    />
                                }
                         />
-                        <Route path="/messages" exact element={<Dialogs data={state.Dialogs}/>}/>
-                        <Route path="/news" exact element={'news'}/>
+                        <Route path="/messages" exact element={ <Dialogs store={ store } dispatch={ dispatch }/> }/>
+                        <Route path="/news" exact element={ 'news' }/>
                     </Routes>
                 </div>
-
             </div>
         </>
     )

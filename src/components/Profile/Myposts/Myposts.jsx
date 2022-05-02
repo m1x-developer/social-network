@@ -1,18 +1,19 @@
 import React from 'react';
 import Post from "./Post/Post";
-import {updateNewPostText} from "../../../redux/state";
+import { addPostActionCreator, updateNewPostTextActionCreator } from "../../../redux/profile-reducer";
 
-const Myposts = ({data, addPost, updateNewPostText}) => {
-
-
+const Myposts = ({data,dispatch}) => {
+    
     let newPostElement = React.createRef()
+    
     let addNewPost = () => {
-        addPost()
+        dispatch(addPostActionCreator())
     }
 
     let onChangePost = () => {
         let text = newPostElement.current.value
-        updateNewPostText(text)
+        let action = updateNewPostTextActionCreator(text);
+        dispatch(action)
     }
 
     return (
