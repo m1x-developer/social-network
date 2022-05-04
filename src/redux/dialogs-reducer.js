@@ -11,8 +11,6 @@ let initialState = {
     textPost: [
         {id: 1, text: "bla"},
         {id: 2, text: "bla bla "},
-        {id: 3, text: "bla bla bla"},
-        {id: 4, text: "bla bla bla"},
     ],
     newMessageBody: ""
     

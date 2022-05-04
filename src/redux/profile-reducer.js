@@ -5,8 +5,6 @@ let initialState = {
     myPosts: [
         {id: 1, text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, minus"},
         {id: 2, text: "Lorem ipsum ur adipisicing elit. Cum, minus"},
-        {id: 3, text: "Lor adipisicing elit. Cum, minus"},
-        {id: 4, text: "Lor minus"}
     ],
     newPostText: ''
 }

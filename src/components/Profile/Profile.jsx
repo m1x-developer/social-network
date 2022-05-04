@@ -1,17 +1,14 @@
 import React, { Fragment } from 'react';
 import Myposts from "./Myposts/Myposts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import MypostsContainer from "./Myposts/MypostsContainer";
 
 
-const Profile = ({state, addPost, updateNewPostText,dispatch}) => {
+const Profile = ({store}) => {
     return (
         <Fragment>
             <ProfileInfo/>
-            <Myposts
-                state={ state }
-                addPost={ addPost }
-                dispatch={ dispatch }
-            />
+            <MypostsContainer store={ store }/>
         </Fragment>
     );
 };

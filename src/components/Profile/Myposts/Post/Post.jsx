@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Post = ({state}) => {
+const Post = ({posts}) => {
     return (
-        state.myPosts.map((e)=>{
+        posts.map((e)=>{
             return(
                 <div className="post" key={e.id}>
                     <img src="https://abrakadabra.fun/uploads/posts/2021-12/1640528661_1-abrakadabra-fun-p-serii-chelovek-na-avu-1.png" alt=""/>

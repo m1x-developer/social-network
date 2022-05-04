@@ -1,20 +1,20 @@
 import React from 'react';
 import DialogMassageItem from "./MessageItem/MessageItem";
 import DialogUser from "./DialogItem/DialogUser";
-import { sendMessageActionCreator, updateNewMessageBodyCreator } from "../../redux/dialogs-reducer";
+import {updateNewMessageBodyCreator } from "../../redux/dialogs-reducer";
 
 
-const Dialogs = ({dispatch,store }) => {
-    let data = store.getState().Dialogs
+
+const Dialogs = ({Dialogs,sendMessage,updateNewMessageBodyCreator}) => {
+    let data = Dialogs
     
     let onSendMessageClick = () => {
-        dispatch(sendMessageActionCreator())
+       sendMessage()
         
     }
     let onNewMessageChange = (e) => {
         let body = e.target.value
-        dispatch(updateNewMessageBodyCreator(body))
-       
+        updateNewMessageBodyCreator(body)
     }
    
     
@@ -23,6 +23,7 @@ const Dialogs = ({dispatch,store }) => {
             <DialogUser name={ e.name } key={e.id}/>
         )
     })
+    
     let messageElements = <DialogMassageItem messageText={ data.textPost }/>
     
     let newMessageBody = data.newMessageBody
