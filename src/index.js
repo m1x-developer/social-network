@@ -4,24 +4,19 @@ import store from "./redux/redux-store";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import { Provider } from "react-redux";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
-let renderNew = (state) => {
-    root.render(
-        <BrowserRouter>
+root.render(
+    <BrowserRouter>
+        <Provider store={ store }>
             <App
                 state={ store.getState() }
-                dispatch={ store.dispatch.bind(store)}
-                store={store}
+                dispatch={ store.dispatch.bind(store) }
+                store={ store }
             />
-        </BrowserRouter>
-    )
-    
-}
+        </Provider>
+    </BrowserRouter>
+)
 
-renderNew(store.getState)
-store.subscribe(() => {
-    let state =  store.getState()
-    renderNew(state)
-})

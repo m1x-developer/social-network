@@ -10,20 +10,24 @@ let initialState = {
 }
 
 const profileReducer = (state = initialState, action) => {
-    // eslint-disable-next-line default-case
     switch (action.type) {
-        case ADD_POST :
-            
+        case ADD_POST : {
             let newPost = {
                 id: 20,
                 text: state.newPostText
             }
-            state.myPosts.push(newPost)
-            state.newPostText = ''
-            return state
-        case UPDATE_NEW_POST_TEXT :
-            state.newPostText = action.postMessage
-            return state
+            return {
+                ...state,
+                myPosts: [...state.myPosts, newPost],
+                newPostText: ''
+            }
+        }
+        case UPDATE_NEW_POST_TEXT : {
+            return {
+                ...state,
+                newPostText: action.postMessage
+            }
+        }
         default:
             return state
     }

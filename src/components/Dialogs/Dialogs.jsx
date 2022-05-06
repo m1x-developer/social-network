@@ -1,32 +1,31 @@
 import React from 'react';
 import DialogMassageItem from "./MessageItem/MessageItem";
 import DialogUser from "./DialogItem/DialogUser";
-import {updateNewMessageBodyCreator } from "../../redux/dialogs-reducer";
 
 
 
-const Dialogs = ({Dialogs,sendMessage,updateNewMessageBodyCreator}) => {
-    let data = Dialogs
+const Dialogs = (props) => {
     
     let onSendMessageClick = () => {
-       sendMessage()
+       props.sendMessage()
         
     }
     let onNewMessageChange = (e) => {
         let body = e.target.value
-        updateNewMessageBodyCreator(body)
+        props.updateNewMessageBodyCreator(body)
+        
     }
-   
     
-    let dialogElements = data.userName.map((e) => {
+    let dialogElements = props.state.userName.map((e) => {
         return (
             <DialogUser name={ e.name } key={e.id}/>
         )
     })
     
-    let messageElements = <DialogMassageItem messageText={ data.textPost }/>
+    let messageElements = <DialogMassageItem messageText={ props.state.textPost }/>
     
-    let newMessageBody = data.newMessageBody
+    let newMessageBody = props.state.newMessageBody
+    
     
     
     return (
