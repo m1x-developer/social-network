@@ -82,6 +82,15 @@
     padding-top: 10px;
 }
 
+.selected-page{
+    font-weight: bold;
+    padding: 2px;
+}
+
+.number-pages{
+    padding: 1px;
+}
+
 
 
 

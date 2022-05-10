@@ -1,35 +1,14 @@
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 
 let initialState = {
-    users: [
-        // {
-        //     id: 1,
-        //     fullName: 'Maks',
-        //     photoUrl:'https://abrakadabra.fun/uploads/posts/2021-12/1640528661_1-abrakadabra-fun-p-serii-chelovek-na-avu-1.png',
-        //     status: 'test status 1',
-        //     location: {city: 'Tula', country: 'Russia'},
-        //     followed: false
-        // },
-        // {
-        //     id: 2,
-        //     fullName: 'Maks',
-        //     photoUrl:'https://abrakadabra.fun/uploads/posts/2021-12/1640528661_1-abrakadabra-fun-p-serii-chelovek-na-avu-1.png',
-        //     status: 'test status 2',
-        //     location: {city: 'Moscow', country: 'Russia'},
-        //     followed: true
-        // },
-        // {
-        //     id: 3,
-        //     fullName: 'Maks',
-        //     photoUrl:'https://abrakadabra.fun/uploads/posts/2021-12/1640528661_1-abrakadabra-fun-p-serii-chelovek-na-avu-1.png',
-        //     status: 'test status 3',
-        //     location: {city: 'NY', country: 'USA'},
-        //     followed: false
-        // },
-    ],
-    
+    users: [],
+    pageSize: 100,
+    totalUsersCount: 0,
+    currentPage: 1
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -58,8 +37,14 @@ const usersReducer = (state = initialState, action) => {
         case SET_USERS:
             return {
                 ...state,
-                users: [...state.users, ...action.users]
+                users: action.users
             }
+        case SET_CURRENT_PAGE: {
+            return {...state, currentPage: action.currentPage}
+        }
+        case SET_TOTAL_USERS_COUNT: {
+            return {...state, totalUsersCount: action.count}
+        }
         default:
             return state
     }
@@ -84,6 +69,20 @@ export const setUsersAC = (users) => {
     return {
         type: SET_USERS,
         users
+    }
+}
+
+export const setCurrentPageAC = (currentPage) => {
+    return {
+        type: SET_CURRENT_PAGE,
+        currentPage
+    }
+}
+
+export const setUsersTotalCountAC = (totalUsersCount) => {
+    return {
+        type: SET_TOTAL_USERS_COUNT,
+        count: totalUsersCount
     }
 }
 
