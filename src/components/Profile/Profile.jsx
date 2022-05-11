@@ -4,11 +4,11 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MypostsContainer from "./Myposts/MypostsContainer";
 
 
-const Profile = ({store}) => {
+const Profile = (props) => {
     return (
         <Fragment>
-            <ProfileInfo/>
-            <MypostsContainer store={ store }/>
+            <ProfileInfo profile={props.profile}/>
+            <MypostsContainer/>
         </Fragment>
     );
 };

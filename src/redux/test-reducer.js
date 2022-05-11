@@ -1,19 +1,16 @@
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const SET_USER_PROFILE = 'SET_USER_PROFILE'
+const TEST_REDUCER_ADD = 'TEST_REDUCER_ADD'
+const TEST_REDUCER_UPDATE = 'TEST_REDUCER_ADD'
 
 let initialState = {
-    myPosts: [
+    posts : [
         {id: 1, text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, minus"},
-        {id: 2, text: "Lorem ipsum ur adipisicing elit. Cum, minus"},
     ],
-    newPostText: '',
-    profile:null
+    zanulenie : ''
 }
 
-const profileReducer = (state = initialState, action) => {
+const testReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST : {
+        case TEST_REDUCER_ADD : {
             let newPost = {
                 id: 20,
                 text: state.newPostText
@@ -24,39 +21,33 @@ const profileReducer = (state = initialState, action) => {
                 newPostText: ''
             }
         }
-        case UPDATE_NEW_POST_TEXT : {
-            
+        case TEST_REDUCER_UPDATE : {
             return {
                 ...state,
                 newPostText: action.postMessage
             }
         }
-        case SET_USER_PROFILE : {
-            return {...state, profile:action.profile}
-        }
+       
         default:
             return state
     }
 }
 
+
+
 export const addPostActionCreator = () => {
     return {
-        type: ADD_POST
+        type: TEST_REDUCER_ADD
     }
 }
 
 export const updateNewPostTextActionCreator = (text) => {
     return {
-        type: UPDATE_NEW_POST_TEXT,
+        type: TEST_REDUCER_UPDATE,
         postMessage: text
     }
 }
 
-export const setUserProfile = (profile) => {
-    return {
-        type: SET_USER_PROFILE,
-        profile: profile
-    }
-}
 
-export default profileReducer
+
+export default testReducer

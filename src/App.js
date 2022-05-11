@@ -2,11 +2,13 @@
 import { Routes, Route } from "react-router-dom";
 import Header from './components/Header/Header'
 import Navbar from './components/Navbar/Navbar'
-import Profile from "./components/Profile/Profile";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import TestConrainer from "./components/testConrainer";
 //css
 import './App.css'
+
 
 
 const App = () => {
@@ -17,9 +19,10 @@ const App = () => {
                 <Navbar/>
                 <div className="content">
                     <Routes>
-                        <Route path="/" exact element={ <Profile/> }/>
+                        <Route path="/profile/*"  element={ <ProfileContainer/> }/>
                         <Route path="/messages" exact element={ <DialogsContainer/> }/>
                         <Route path="/users" exact element={ <UsersContainer/> }/>
+                        <Route path="/test" exact element={ <TestConrainer/> }/>
                     </Routes>
                 </div>
             </div>

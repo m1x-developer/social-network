@@ -1,18 +1,20 @@
 import React from 'react';
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+    if (!props.profile) {
+        return <div>Loading...</div>
+    }
     return (
         <div className="profile-block">
             <div className="profile-wrapper">
                 <div className="profile-foto">
-                    <img src="https://cs319323.vk.me/v319323049/70e1/2gddfIt0mvc.jpg" alt=""/>
+                    <img src={props.profile.photos.large} alt=""/>
                 </div>
                 <div className="profile-fio">
-                    FIO
+                    {props.profile.fullName}
                 </div>
             </div>
-            <div className="profile-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, illum.
-            </div>
+            <div className="profile-description">{props.profile.aboutMe}</div>
         </div>
     );
 };

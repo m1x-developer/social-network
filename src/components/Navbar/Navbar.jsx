@@ -7,9 +7,10 @@ const Navbar = () => {
     return (
         <nav className='nav'>
             <ul>
-                <Link className="link" to="/">Profile</Link>
+                <Link className="link" to="/profile/*">Profile</Link>
                 <Link className="link" to="/messages">Messages</Link>
                 <Link className="link" to="/users">Users</Link>
+                <Link className="link" to="/test">TEST</Link>
             </ul>
         </nav>
     );
