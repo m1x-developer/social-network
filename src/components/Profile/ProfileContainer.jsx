@@ -29,7 +29,7 @@ class ProfileContainer extends React.Component {
         let userId = Object.values(this.props.router.params)
         userId = userId[0]
         if (!userId)  {
-            userId = 2
+            userId = 24019
         }
         
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}` ).then(response => {
