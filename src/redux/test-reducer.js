@@ -1,53 +1,42 @@
-const TEST_REDUCER_ADD = 'TEST_REDUCER_ADD'
-const TEST_REDUCER_UPDATE = 'TEST_REDUCER_ADD'
+const COUNT_PLUS = 'counter/incremented'
+const COUNT_MINUS = 'counter/decremented'
 
 let initialState = {
-    posts : [
-        {id: 1, text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, minus"},
-    ],
-    zanulenie : ''
+    value: 0
 }
 
-const testReducer = (state = initialState, action) => {
+
+function testReducer(state = initialState, action) {
     switch (action.type) {
-        case TEST_REDUCER_ADD : {
-            let newPost = {
-                id: 20,
-                text: state.newPostText
-            }
+        case 'counter/incremented':
             return {
                 ...state,
-                myPosts: [...state.myPosts, newPost],
-                newPostText: ''
+                value: state.value + action.value
             }
-        }
-        case TEST_REDUCER_UPDATE : {
+        case 'counter/decremented':
             return {
                 ...state,
-                newPostText: action.postMessage
+                value: state.value - action.value
             }
-        }
-       
         default:
             return state
     }
 }
 
 
-
-export const addPostActionCreator = () => {
+export const testINAC = (value) => {
     return {
-        type: TEST_REDUCER_ADD
+        type: COUNT_PLUS,
+        value:value
     }
 }
 
-export const updateNewPostTextActionCreator = (text) => {
+export const testDEAC = (value) => {
     return {
-        type: TEST_REDUCER_UPDATE,
-        postMessage: text
+        type: COUNT_MINUS,
+        value:value
     }
 }
-
 
 
 export default testReducer
