@@ -1,8 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from "react-router-dom";
-import axios from "axios";
-import { followThunkCreator, toggleFollowingProgress, unFollowThunkCreator } from "../../redux/users-reducer";
-import { usersAPI } from "../api/api";
+import {NavLink } from "react-router-dom";
 
 const Users = (props) => {
     //pagination

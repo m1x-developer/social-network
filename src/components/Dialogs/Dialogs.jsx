@@ -1,6 +1,7 @@
 import React from 'react';
 import DialogMassageItem from "./MessageItem/MessageItem";
 import DialogUser from "./DialogItem/DialogUser";
+import { Navigate } from "react-router-dom";
 
 
 
@@ -25,6 +26,12 @@ const Dialogs = (props) => {
     let messageElements = <DialogMassageItem messageText={ props.state.textPost }/>
     
     let newMessageBody = props.state.newMessageBody
+    
+    //redirect 
+    if(props.isAuth === false){
+        return <Navigate to={"/login"}/>
+    }
+    
     
     
     
