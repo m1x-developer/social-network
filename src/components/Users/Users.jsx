@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, NavLink } from "react-router-dom";
 import axios from "axios";
+import { followThunkCreator, toggleFollowingProgress, unFollowThunkCreator } from "../../redux/users-reducer";
+import { usersAPI } from "../api/api";
 
 const Users = (props) => {
     //pagination
@@ -10,7 +12,6 @@ const Users = (props) => {
         pages.push(i)
     }
     //pagination END
-    
     return (
         <div>
             <div style={ {display: 'flex', flexWrap: 'wrap'} }>
@@ -35,38 +36,12 @@ const Users = (props) => {
                     <div>
                         {
                             user.followed ?
-                                <button onClick={ () =>
-                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${ user.id }`,
-                                        {
-                                            withCredentials: true,
-                                            headers: {
-                                                "API-KEY":"b670215c-ddc3-47bc-b6a2-e3183e8a3d81"
-                                            }
-                                        })
-                                        .then(response => {
-                                            if (response.data.resultCode === 0) {
-                                                props.unfollow(user.id)
-                                            }
-                                        })
-                                }>Unfollow</button>
+                                <button disabled={ props.followingInProgress.some(id => id === user.id) }
+                                        onClick={ () => {props.unFollowThunkCreator(user.id)} }>Unfollow</button>
                                 :
-                                <button onClick={ () =>
-                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${ user.id }`,
-                                        {},
-                                        {
-                                            withCredentials: true,
-                                             headers: {
-                                                "API-KEY":"b670215c-ddc3-47bc-b6a2-e3183e8a3d81"
-                                             }
-                                        })
-                                        .then(response => {
-                                            if (response.data.resultCode === 0) {
-                                                props.follow(user.id)
-                                            }
-                                        })
-        
-                                }>Follow</button>
-                                
+                                <button disabled={ props.followingInProgress.some(id => id === user.id) }
+                                        onClick={ () => {props.followThunkCreator(user.id)} }>Follow</button>
+    
                         }
                        
                     </div>
